@@ -63,7 +63,19 @@ def performOperation(*args,**kwargs):
 Operation= performOperation(1,2,3,operation='sum')
 
 LOCALS
-In Python, there are two types of variables: local variables, which are defined inside the function, and global variables, which are defined outside the function in the main code block. 
+A variable created inside a function belongs to the local scope of that function, and can only be used inside that function.
+In Python, there are two types of variables: local variables, which are defined inside the function, and global variables, which are defined outside the function in the main code block.
+
+EXAMPLE
+The local variable can be accessed from a function within the function:
+
+def myfunc():
+  x = 300
+  def myinnerfunc():
+    print(x)
+  myinnerfunc()
+
+myfunc()
 
 import math
 
@@ -72,7 +84,33 @@ def performOperation(num1,num2,operation='sum'):
 performOperation(1,2,operation='multiply')
 print(num1)
 
-GLOBALS AND LOCAL SCOPE
+GLOBAL
+A variable created in the main body of the Python code is a global variable and belongs to the global scope.Global variables are available from within any scope, global and local.
 
+EXAMPLE
+A variable created outside of a function is global and can be used by anyone:
+
+x = 300
+
+def myfunc():
+  print(x)
+myfunc()
+print(x)
+
+GLOBALS AND LOCAL SCOPES
+If you operate with the same variable name inside and outside of a function, Python will treat them as two separate variables,
+
+Example
+The function will print the local x, and then the code will print the global x:
+
+x = 300
+
+def myfunc():
+  x = 200
+  print(x)
+
+myfunc()
+
+print(x)ne available in the global scope (outside the function) and one available in the local scope (inside the function):
 
 
