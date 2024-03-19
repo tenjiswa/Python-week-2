@@ -1,0 +1,78 @@
+ANATOMY OF A FUNCTION
+FUNCTION
+Functions are composed of a name and parameters, which are denoted by the def statement.So, to create a function, let's call it performOperation and include num1, num2, and operation as parameters.
+EXAMPLE
+import math
+
+def performOperation(num1,num2,operation):
+
+    if operation== 'sum':
+        return num1 + num2
+
+    if operation== 'multiply':
+        return num1 * num2
+
+division = performOperation(2,3,'sum')
+
+NAMED PARAMETERS
+For instance, let's add another keyword argument, "message", to our function. Specify a default message that will be printed out when the function is called.
+When calling the function, pass in the message before or after the operation, as long as we specify which argument is which by using a comma to separate them.
+
+def performOperation(num1,num2,operation='sum',message='Default message'):
+ print(message)
+ if operation=='sum':
+    return num1 + num2
+ if operation=='multiply':
+    return num1*num2
+division =performOperation(2,3,message='A new message!',operation='multiply')
+print(division)
+
+*ARGS
+There is a rule when using keyword arguments in Python i.e. they must come after the positional arguments.The order of the first two arguments is important and cannot be changed.
+However, after these mandatory arguments, the keyword arguments can be in any order. 
+
+import math
+def perfomOperation(*args):
+ print(args)
+performOperation(1,2,3)
+performOperation(1,2,3,operation='sum')
+
+**KWARGS
+In order to handle keyword arguments, a method called kwargs can be used. Kwags is short for keyword arguments.Print kwargs to see that the keyword arguments are now stored as a dictionary instead of a tuple.
+This makes sense because keyword arguments have keys and values and can be passed in any order, so a dictionary is a more appropriate data structure for referencing them.
+
+def performOperation(*args,**kwargs):
+ print(args)
+ print(kwargs)
+Operation= performOperation(1,2,3,operation='sum')
+
+def performOperation(*args,operation='sum'):
+ if operation=='sum':
+  return(args)
+  if operation=='multiply':
+   return(math.pro(args))
+  performOperation(1,2,3,6,7,8 operation='sum')
+
+VARIABLES AND SCOOP
+FUNCTION SCOOPE-*args and **kwargs were used to print out the arguments passed into a function. This allowed us to see a tuple and dictionary of the passed arguments.  
+However, there's another method that allows us to access all the variables within a Python function without any asterisks. This method is called the "locals" function.
+
+def performOperation(*args,**kwargs):
+ print(args)
+ print(kwargs)
+Operation= performOperation(1,2,3,operation='sum')
+
+LOCALS
+In Python, there are two types of variables: local variables, which are defined inside the function, and global variables, which are defined outside the function in the main code block. 
+
+import math
+
+def performOperation(num1,num2,operation='sum'):
+ print(locals())
+performOperation(1,2,operation='multiply')
+print(num1)
+
+GLOBALS AND LOCAL SCOPE
+
+
+
