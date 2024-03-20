@@ -150,6 +150,8 @@ def removeShortWords(text):
 
 def removeLongWords(text):
  return''.join[word for word in text.split()if len(word)<6]
+
+
     
 
 
