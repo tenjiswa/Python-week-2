@@ -102,6 +102,7 @@ If you operate with the same variable name inside and outside of a function, Pyt
 
 Example
 The function will print the local x, and then the code will print the global x:
+print(x)ne available in the global scope (outside the function) and one available in the local scope (inside the function):
 
 x = 300
 
@@ -111,6 +112,44 @@ def myfunc():
 
 myfunc()
 
-print(x)ne available in the global scope (outside the function) and one available in the local scope (inside the function):
+
+
+FUNCTIONS AS VARIABLES
+#Variables as Functions
+Variables and functions both have names and data associated with them. However, for functions, this data includes information about required parameters and the lines of instruction to be executed.
+x=5
+def x():
+ return s
+
+VIEWING FUNCTION DATA WITH _CODE_
+
+The "code" attribute of Python function objects can be used to confirm that functions are just variables in Python.
+Print the variable names and the byte object of all the lines of instruction in a function using this attribute.
+print(x._code_.co_varnames)
+print(x._code_.code)
+
+TEXT PROCESSING IN PYTHON
+There are two text processing operations, and a function that can make the text lowercase,remove punctuation, new lines, and words that are three characters or less. 
+It can also remove long words. By calling these functions in a list, the order can be changed or decide which functions to apply.
+
+def lowercase(text):
+ return text.lower()\
+    
+def removePunctuation(text):
+    punctuation=[',','-',',''*']
+ for punctuation in punctuations:
+    text=text.replace(punctuation)
+ return text
+    
+def removeNewline(text):
+    text=text.replace('/n,'')
+ return text
+
+def removeShortWords(text):
+ return''.join[word for word in text.split()if len(word)>3]
+
+def removeLongWords(text):
+ return''.join[word for word in text.split()if len(word)<6]
+    
 
 
