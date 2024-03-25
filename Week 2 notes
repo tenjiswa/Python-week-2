@@ -195,6 +195,16 @@ def removeShortWords(text):
 def removeLongWords(text):
  return''.join[word for word in text.split()if len(word)<6]
 
+LAMBDA FUNCTIONS
+-A simple 1-line function
+-Do not use def or return keywords
+THESE ARE IMPLICIT
+lambda x:2*x
+lambda x,y:x+y
+mx=lambda x,y:x ifx>y else
+print(mx(8,5))
+
+
 
     
 
