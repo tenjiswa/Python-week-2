@@ -98,6 +98,50 @@ myfunc()
 print(x)
 
 GLOBALS AND LOCAL SCOPES
+
+SCOPE=LIFETIME(The area under which a variable is applicable or alive)
+STRICT DEFINITION(A block or region where a variable is declared, defined and used and when a block or a region ends, variable automatically destroyed)
+
+#include <stdio.h>
+int main(){
+int var=34;(scope of this variable is within main() function only.Therefore called LOCAL to main() function)
+print("%d",var);
+return 0;
+}
+int fun()
+{
+print("%d",var) (trying to access variable 'var' outside main() function)
+}
+BASIC PRINCIPLE OF SCOPING
+#include <stdio.h>
+int main(){
+int var=3;
+{
+  int var=4;
+printf("%d\n",var);
+}
+printf("%d",var);
+return 0;
+}
+NB(We defined same name within the same block,difference is that the variables are declared inside another block variable lifetime is within this block only)
+
+#include <stdio.h>
+int fun();
+int var =10; (This variable is outside of all functions, therefore called a GLOBAL VARIABLE)
+int main() {  (Advantage is that the variable is available to all functions,Any function that wishes to call this variable can call it there wont be any problem)
+
+    int var=3;
+   print("%d\n",var);-3 is output
+  fun();
+return 0;
+}
+  int fun()
+{
+ print("%d",var); (It will access the GLOBAL VARIABLE.(NB)-GLOBAL VARIABLE is available to this function and there is no local variable inside this function.
+Therefore compiler will look for a global variable and it will print the contents of the global variable)
+}
+
+
 If you operate with the same variable name inside and outside of a function, Python will treat them as two separate variables,
 
 Example
