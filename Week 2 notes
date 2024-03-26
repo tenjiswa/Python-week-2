@@ -204,6 +204,31 @@ lambda x,y:x+y
 mx=lambda x,y:x ifx>y else
 print(mx(8,5))
 
+INSTANCE ATTRIBUTES
+Are created inside a constructor.The constructor for instance attributes is the _init_() method.
+The constructor initializes the instance attributes.The first parameter of the constructor is self.The atribute of the instance come after the "self" parameter.
+EXAMPLE
+Class Animal:
+   home='zoo'
+    def__init__(self,name,age):
+      self.name=name
+      self.age=age
+
+CLASS ATTRIBUTE
+Is the variable that belong to a class.It is a property of the class. It belongs to the class rather than any specific object.
+This attribute is created outside the constructor method(_init_)
+
+CLASS METHODS
+Are not bound to an instance of a class(object) but to the clas itself.There are two types of attributes in a class,
+1.CLASS ATTRIBUTE- Are bound to the class
+2.INSTANCE ATTRIBUTES-Are bound to an object
+Class methods can only access and modify class attributes and not instance attributes
+Two ways to create a class method
+-Class Method() function
+-@Class Method
+
+
+
 
 
     
