@@ -1,0 +1,236 @@
+ANATOMY OF A FUNCTION
+FUNCTION
+Functions are composed of a name and parameters, which are denoted by the def statement.So, to create a function, let's call it performOperation and include num1, num2, and operation as parameters.
+EXAMPLE
+import math
+
+def performOperation(num1,num2,operation):
+
+    if operation== 'sum':
+        return num1 + num2
+
+    if operation== 'multiply':
+        return num1 * num2
+
+division = performOperation(2,3,'sum')
+
+NAMED PARAMETERS
+For instance, let's add another keyword argument, "message", to our function. Specify a default message that will be printed out when the function is called.
+When calling the function, pass in the message before or after the operation, as long as we specify which argument is which by using a comma to separate them.
+
+def performOperation(num1,num2,operation='sum',message='Default message'):
+ print(message)
+ if operation=='sum':
+    return num1 + num2
+ if operation=='multiply':
+    return num1*num2
+division =performOperation(2,3,message='A new message!',operation='multiply')
+print(division)
+
+*ARGS
+There is a rule when using keyword arguments in Python i.e. they must come after the positional arguments.The order of the first two arguments is important and cannot be changed.
+However, after these mandatory arguments, the keyword arguments can be in any order. 
+
+import math
+def perfomOperation(*args):
+ print(args)
+performOperation(1,2,3)
+performOperation(1,2,3,operation='sum')
+
+**KWARGS
+In order to handle keyword arguments, a method called kwargs can be used. Kwags is short for keyword arguments.Print kwargs to see that the keyword arguments are now stored as a dictionary instead of a tuple.
+This makes sense because keyword arguments have keys and values and can be passed in any order, so a dictionary is a more appropriate data structure for referencing them.
+
+def performOperation(*args,**kwargs):
+ print(args)
+ print(kwargs)
+Operation= performOperation(1,2,3,operation='sum')
+
+def performOperation(*args,operation='sum'):
+ if operation=='sum':
+  return(args)
+  if operation=='multiply':
+   return(math.pro(args))
+  performOperation(1,2,3,6,7,8 operation='sum')
+
+VARIABLES AND SCOOP
+FUNCTION SCOOPE-*args and **kwargs were used to print out the arguments passed into a function. This allowed us to see a tuple and dictionary of the passed arguments.  
+However, there's another method that allows us to access all the variables within a Python function without any asterisks. This method is called the "locals" function.
+
+def performOperation(*args,**kwargs):
+ print(args)
+ print(kwargs)
+Operation= performOperation(1,2,3,operation='sum')
+
+LOCALS
+A variable created inside a function belongs to the local scope of that function, and can only be used inside that function.
+In Python, there are two types of variables: local variables, which are defined inside the function, and global variables, which are defined outside the function in the main code block.
+
+EXAMPLE
+The local variable can be accessed from a function within the function:
+
+def myfunc():
+  x = 300
+  def myinnerfunc():
+    print(x)
+  myinnerfunc()
+
+myfunc()
+
+import math
+
+def performOperation(num1,num2,operation='sum'):
+ print(locals())
+performOperation(1,2,operation='multiply')
+print(num1)
+
+GLOBAL
+A variable created in the main body of the Python code is a global variable and belongs to the global scope.Global variables are available from within any scope, global and local.
+
+EXAMPLE
+A variable created outside of a function is global and can be used by anyone:
+
+x = 300
+
+def myfunc():
+  print(x)
+myfunc()
+print(x)
+
+GLOBALS AND LOCAL SCOPES
+
+SCOPE=LIFETIME(The area under which a variable is applicable or alive)
+STRICT DEFINITION(A block or region where a variable is declared, defined and used and when a block or a region ends, variable automatically destroyed)
+
+#include <stdio.h>
+int main(){
+int var=34;(scope of this variable is within main() function only.Therefore called LOCAL to main() function)
+print("%d",var);
+return 0;
+}
+int fun()
+{
+print("%d",var) (trying to access variable 'var' outside main() function)
+}
+BASIC PRINCIPLE OF SCOPING
+#include <stdio.h>
+int main(){
+int var=3;
+{
+  int var=4;
+printf("%d\n",var);
+}
+printf("%d",var);
+return 0;
+}
+NB(We defined same name within the same block,difference is that the variables are declared inside another block variable lifetime is within this block only)
+
+#include <stdio.h>
+int fun();
+int var =10; (This variable is outside of all functions, therefore called a GLOBAL VARIABLE)
+int main() {  (Advantage is that the variable is available to all functions,Any function that wishes to call this variable can call it there wont be any problem)
+
+    int var=3;
+   print("%d\n",var);-3 is output
+  fun();
+return 0;
+}
+  int fun()
+{
+ print("%d",var); (It will access the GLOBAL VARIABLE.(NB)-GLOBAL VARIABLE is available to this function and there is no local variable inside this function.
+Therefore compiler will look for a global variable and it will print the contents of the global variable)
+}
+
+
+If you operate with the same variable name inside and outside of a function, Python will treat them as two separate variables,
+
+Example
+The function will print the local x, and then the code will print the global x:
+print(x)ne available in the global scope (outside the function) and one available in the local scope (inside the function):
+
+x = 300
+
+def myfunc():
+  x = 200
+  print(x)
+
+myfunc()
+
+
+
+FUNCTIONS AS VARIABLES
+#Variables as Functions
+Variables and functions both have names and data associated with them. However, for functions, this data includes information about required parameters and the lines of instruction to be executed.
+x=5
+def x():
+ return s
+
+VIEWING FUNCTION DATA WITH _CODE_
+
+The "code" attribute of Python function objects can be used to confirm that functions are just variables in Python.
+Print the variable names and the byte object of all the lines of instruction in a function using this attribute.
+print(x._code_.co_varnames)
+print(x._code_.code)
+
+TEXT PROCESSING IN PYTHON
+There are two text processing operations, and a function that can make the text lowercase,remove punctuation, new lines, and words that are three characters or less. 
+It can also remove long words. By calling these functions in a list, the order can be changed or decide which functions to apply.
+
+def lowercase(text):
+ return text.lower()\
+    
+def removePunctuation(text):
+    punctuation=[',','-',',''*']
+ for punctuation in punctuations:
+    text=text.replace(punctuation)
+ return text
+    
+def removeNewline(text):
+    text=text.replace('/n,'')
+ return text
+
+def removeShortWords(text):
+ return''.join[word for word in text.split()if len(word)>3]
+
+def removeLongWords(text):
+ return''.join[word for word in text.split()if len(word)<6]
+
+LAMBDA FUNCTIONS
+-A simple 1-line function
+-Do not use def or return keywords
+THESE ARE IMPLICIT
+lambda x:2*x
+lambda x,y:x+y
+mx=lambda x,y:x ifx>y else
+print(mx(8,5))
+
+INSTANCE ATTRIBUTES
+Are created inside a constructor.The constructor for instance attributes is the _init_() method.
+The constructor initializes the instance attributes.The first parameter of the constructor is self.The atribute of the instance come after the "self" parameter.
+EXAMPLE
+Class Animal:
+   home='zoo'
+    def__init__(self,name,age):
+      self.name=name
+      self.age=age
+
+CLASS ATTRIBUTE
+Is the variable that belong to a class.It is a property of the class. It belongs to the class rather than any specific object.
+This attribute is created outside the constructor method(_init_)
+
+CLASS METHODS
+Are not bound to an instance of a class(object) but to the clas itself.There are two types of attributes in a class,
+1.CLASS ATTRIBUTE- Are bound to the class
+2.INSTANCE ATTRIBUTES-Are bound to an object
+Class methods can only access and modify class attributes and not instance attributes
+Two ways to create a class method
+-Class Method() function
+-@Class Method
+
+
+
+
+
+    
+
+
